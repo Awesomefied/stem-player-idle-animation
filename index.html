@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stem Player Idle Animation</title>
+</head>
+<body>
+<style>
+body {
+ background-color: black;
+ padding:0px;
+ margin:0px;
+ color: white;
+ font-family: 'Courier New', monospace;
+}
+.dot {
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  box-shadow: 0px 0px 20px #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+p {
+  margin: 0px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  text-shadow: 0px 0px 10px #fff;
+}
+</style>
+<div class="center">
+    <span class="dot" id="one"></span>
+    <span class="dot" id="two"></span>
+    <span class="dot" id="three"></span>
+    <span class="dot" id="four"></span>
+</div>
+<p>Made by Awesomefied.</p>
+<script>
+//made by Awesomefied :D
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+var leds = {"one": [getRandomInt(256), getRandomInt(256), getRandomInt(256)], "two": [getRandomInt(256), getRandomInt(256), getRandomInt(256)]};
+var leds2 = {"one": [getRandomInt(256), getRandomInt(256), getRandomInt(256)], "two": [getRandomInt(256), getRandomInt(256), getRandomInt(256)]};
+if (leds.one[0] != 255 && leds.one[1] != 255 && leds.one[2] != 255) {
+        let full = getRandomInt(3);
+        if (full == 0) {
+            leds.one[0] = 255;
+        } else if (full == 1) {
+            leds.one[1] = 255;
+        } else {
+            leds.one[2] = 255;
+        }
+    }
+if (leds.two[0] != 255 && leds.two[2] != 255 && leds.two[1] != 255) {
+    let full = getRandomInt(3);
+    if (full == 0) {
+        leds.two[0] = 255;
+    } else if (full == 1) {
+        leds.two[1] = 255;
+    } else {
+        leds.two[2] = 255;
+    }
+    }
+function changecolor() {
+    if (leds.one[0] > leds2.one[0]) {
+        leds.one[0]--
+    } else if (leds.one[0] < leds2.one[0]) {
+        leds.one[0]++
+    } else {
+        leds2.one[0] = getRandomInt(256);
+    }
+    if (leds.one[1] > leds2.one[1]) {
+        leds.one[1]--
+    } else if (leds.one[1] < leds2.one[1]) {
+        leds.one[1]++
+    } else {
+        leds2.one[1] = getRandomInt(256);
+    }
+    if (leds.one[2] > leds2.one[2]) {
+        leds.one[2]--
+    } else if (leds.one[2] < leds2.one[2]) {
+        leds.one[2]++
+    } else {
+        leds2.one[2] = getRandomInt(256);
+    }
+    
+    if (leds.two[0] > leds2.two[0]) {
+        leds.two[0]--
+    } else if (leds.two[0] < leds2.two[0]) {
+        leds.two[0]++
+    } else {
+        leds2.two[0] = getRandomInt(256);
+    }
+    if (leds.two[1] > leds2.two[1]) {
+        leds.two[1]--
+    } else if (leds.two[1] < leds2.two[1]) {
+        leds.two[1]++
+    } else {
+        leds2.two[1] = getRandomInt(256);
+    }
+    if (leds.two[2] > leds2.two[2]) {
+        leds.two[2]--
+    } else if (leds.two[2] < leds2.two[2]) {
+        leds.two[2]++
+    } else {
+        leds2.two[2] = getRandomInt(256);
+    }
+    document.getElementById("one").style.backgroundColor = "rgb("+leds.one[0]+","+leds.one[1]+","+leds.one[2]+")";
+    document.getElementById("two").style.backgroundColor = "rgb("+(leds.one[0]+((leds.two[0]-leds.one[0])*(1/4)))+","+(leds.one[1]+((leds.two[1]-leds.one[1])*(1/4)))+","+(leds.one[2]+((leds.two[2]-leds.one[2])*(1/4)))+")";
+    document.getElementById("three").style.backgroundColor = "rgb("+(leds.one[0]+((leds.two[0]-leds.one[0])*(3/4)))+","+(leds.one[1]+((leds.two[1]-leds.one[1])*(3/4)))+","+(leds.one[2]+((leds.two[2]-leds.one[2])*(3/4)))+")";
+    document.getElementById("four").style.backgroundColor = "rgb("+leds.two[0]+","+leds.two[1]+","+leds.two[2]+")";
+
+    document.getElementById("one").style.boxShadow = "0px 0px 100px rgb("+leds.one[0]+","+leds.one[1]+","+leds.one[2]+")";
+    document.getElementById("two").style.boxShadow = "0px 0px 100px rgb("+(leds.one[0]+((leds.two[0]-leds.one[0])*(1/4)))+","+(leds.one[1]+((leds.two[1]-leds.one[1])*(1/4)))+","+(leds.one[2]+((leds.two[2]-leds.one[2])*(1/4)))+")";
+    document.getElementById("three").style.boxShadow = "0px 0px 100px rgb("+(leds.one[0]+((leds.two[0]-leds.one[0])*(3/4)))+","+(leds.one[1]+((leds.two[1]-leds.one[1])*(3/4)))+","+(leds.one[2]+((leds.two[2]-leds.one[2])*(3/4)))+")";
+    document.getElementById("four").style.boxShadow = "0px 0px 100px rgb("+leds.two[0]+","+leds.two[1]+","+leds.two[2]+")";
+}
+setInterval(changecolor, 20);
+</script>
+</body>
+</html>
